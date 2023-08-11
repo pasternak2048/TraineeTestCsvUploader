@@ -1,5 +1,4 @@
-﻿using Application.Common.DTOs;
-using Application.Common.Interfaces;
+﻿using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
@@ -21,9 +20,9 @@ namespace Application.Features.UserFeatures.CreateUserCSV
 
         public async Task<List<CreateUserCSVResponse>> Handle(CreateUserCSVRequest request, CancellationToken cancellationToken)
         {
-            var items = _csvService.ReadCSV<UserCSVDto>(request.CSVFile.OpenReadStream()).ToList();
+            var items = _csvService.ReadCSV<User>(request.CSVFile.OpenReadStream()).ToList();
 
-            //_context.Users.AddRange(items);
+            _context.Users.AddRange(items);
 
             await _context.SaveChangesAsync(cancellationToken);
 

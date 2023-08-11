@@ -1,5 +1,4 @@
-﻿using Application.Common.DTOs;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Entities;
 
 namespace Application.Features.UserFeatures.CreateUserCSV
@@ -9,8 +8,6 @@ namespace Application.Features.UserFeatures.CreateUserCSV
         public CreateUserCSVMapper()
         {
             CreateMap<User, CreateUserCSVResponse>().ReverseMap();
-            CreateMap<UserCSVDto, CreateUserCSVResponse>().ReverseMap();
-            CreateMap<User, UserCSVDto>().ReverseMap();
         }
     }
 }
