@@ -1,10 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Common.Interfaces;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Persistence.Context
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext, IApplicationDbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
