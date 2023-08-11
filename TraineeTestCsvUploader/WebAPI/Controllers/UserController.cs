@@ -1,4 +1,5 @@
-﻿using Application.Features.UserFeatures.CreateUserCSV;
+﻿using Application.Features.UserFeatures.CreateUser;
+using Application.Features.UserFeatures.CreateUserCSV;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,13 @@ namespace WebAPI.Controllers
 
         [HttpPost("CreateUserCSV")]
         public async Task<ActionResult<List<CreateUserCSVResponse>>> CreateUserCSV([FromQuery]CreateUserCSVRequest request)
+        {
+            return await _mediator.Send(request);
+        }
+
+
+        [HttpPost("CreateUser")]
+        public async Task<ActionResult<CreateUserResponse>> CreateUser([FromQuery] CreateUserRequest request)
         {
             return await _mediator.Send(request);
         }

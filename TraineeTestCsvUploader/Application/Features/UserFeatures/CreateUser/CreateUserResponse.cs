@@ -1,6 +1,6 @@
-﻿namespace Application.Features.UserFeatures.CreateUserCSV
+﻿namespace Application.Features.UserFeatures.CreateUser
 {
-    public class CreateUserCSVResponse
+    public class CreateUserResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
