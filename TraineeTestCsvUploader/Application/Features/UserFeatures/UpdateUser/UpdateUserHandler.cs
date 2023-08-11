@@ -19,11 +19,11 @@ namespace Application.Features.UserFeatures.UpdateUser
 
         public async Task<UpdateUserResponse> Handle(UpdateUserRequest request, CancellationToken cancellationToken)
         {
-            var item = await _context.Users.FirstOrDefaultAsync(x=>x.Id == request.Id);
+            var item = await _context.Users.FirstOrDefaultAsync(x=>x.Id == request.Id, cancellationToken);
 
             if (item == null)
             {
-                throw new NotFoundException($"Item with Id {request.Id} not wound.");
+                throw new NotFoundException($"Item with Id \" {request.Id} \" not wound.");
             }
 
             item.Name = request.Name;

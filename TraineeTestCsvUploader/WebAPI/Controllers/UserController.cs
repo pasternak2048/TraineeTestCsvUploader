@@ -1,5 +1,6 @@
 ﻿using Application.Features.UserFeatures.CreateUser;
 using Application.Features.UserFeatures.CreateUserCSV;
+using Application.Features.UserFeatures.DeleteUser;
 using Application.Features.UserFeatures.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,10 +30,17 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpPost("UpdateUser")]
+        [HttpPut("UpdateUser")]
         public async Task<ActionResult<UpdateUserResponse>> UpdateUser(UpdateUserRequest request)
         {
             return await _mediator.Send(request);
+        }
+
+
+        [HttpDelete("DeleteUser")]
+        public async Task<ActionResult> DeleteUser(DeleteUserRequest request)
+        {
+            return Ok(await _mediator.Send(request));
         }
 
     }
