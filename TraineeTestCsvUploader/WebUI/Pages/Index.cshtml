@@ -1,0 +1,114 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Users</h2>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Date of birth
+            </th>
+            <th>
+                Married
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Salary
+            </th>
+            <th></th>
+        </tr>
+        @if(Model.Users != null)
+        {
+            @foreach (var item in Model.Users.Items)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.DateOfBirth.ToShortDateString()
+                    </td>
+                    <td>
+                        @{
+                            var married = item.Married ? "Yes" : "No";
+                        }
+                        @married
+                    </td>
+                    <td>
+                        @item.Phone
+                    </td>
+                    <td>
+                        @item.Salary
+                    </td>
+                    <td>
+                        <form method="post">
+                            <a type="submit" class="btn btn-primary" asp-page="Edit" asp-route-pageId="@item.Id">
+                                Edit
+                            </a>
+                            <button type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@item.Id" asp-route-pageNumber="@Model.Users.PageIndex">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+  
+    </table>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="text/csv"/>
+        <button type="submit" class="btn btn-success" asp-page-handler="Upload">
+            Upload
+        </button>
+    </form>
+
+
+
+    @if (Model.Users.HasPreviousPage)
+    {
+        <a asp-page="Index"
+           asp-route-pageNumber="@(Model.Users.PageIndex - 1)"
+           class="btn btn-outline-dark">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Previous Page
+        </a>
+    }
+
+    @if (Model.Users.HasNextPage)
+    {
+        <a asp-page="Index"
+           asp-route-pageNumber="@(Model.Users.PageIndex + 1)"
+           class="btn btn-outline-dark">
+            Next Page
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+
+    @if (Model.Users.TotalPages > 1)
+    {
+        <a> <br>Current page: @Model.Users.PageIndex </a>
+    }
+
+</body>
+</html>
