@@ -41,9 +41,14 @@ namespace Application.Features.UserFeatures.GetUsers
                 itemsQueryable = itemsQueryable.Where(x => x.Name.Contains(request.Name));
             }
 
-            if (request.MinDateOfBirth != null && request.MaxDateOfBirth != null)
+            if (request.MinDateOfBirth != null )
             {
-                itemsQueryable = itemsQueryable.Where(x => x.DateOfBirth >= request.MinDateOfBirth && x.DateOfBirth <= request.MaxDateOfBirth);
+                itemsQueryable = itemsQueryable.Where(x => x.DateOfBirth >= request.MinDateOfBirth);
+            }
+
+            if (request.MaxDateOfBirth != null)
+            {
+                itemsQueryable = itemsQueryable.Where(x => x.DateOfBirth <= request.MaxDateOfBirth);
             }
 
             if (request.Married != null)
