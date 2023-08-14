@@ -1,0 +1,54 @@
+﻿@page
+@model WebUI.Pages.EditModel
+@{
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <input name="id" value="@Model.UserResponse.Id" type="hidden" />
+                <p>
+                    <label class="control-label">Name</label><br />
+                    <input name="name" asp-for="@Model.UserResponse.Name" class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <p>
+                    <label class="control-label">Date of birth</label><br />
+                    <input name="dateOfBirth" asp-for="@Model.UserResponse.DateOfBirth" type="date" class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <p>
+                    <label class="control-label">Married</label><br />
+                    <input name="married" asp-for="@Model.UserResponse.Married" type="checkbox" />
+                </p>
+            </div>
+            <div class="form-group">
+                <p>
+                    <label class="control-label">Phone</label><br />
+                    <input name="phone" asp-for="@Model.UserResponse.Phone" type="number"  class="form-control" />
+                </p>
+            </div>
+            <div class="form-group">
+                <p>
+                    <label class="control-label">Salary</label><br />
+                    <input name="salary" asp-for="@Model.UserResponse.Salary" type="number" class="form-control" />
+                </p>
+            </div>
+
+            <input type="submit" value="Save" class="btn btn-success" />
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

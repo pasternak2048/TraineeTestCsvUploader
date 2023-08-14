@@ -1,6 +1,8 @@
-﻿namespace Application.Features.UserFeatures.CreateUserCSV
+﻿using MediatR;
+
+namespace Application.Features.UserFeatures.UpdateUser
 {
-    public class CreateUserCSVResponse
+    public class UpdateUserRequest : IRequest<UpdateUserResponse>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

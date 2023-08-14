@@ -7,7 +7,7 @@ using Application.Features.UserFeatures.UpdateUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers
+namespace WebUI.Controllers
 {
     public class UserController : BaseApiController
     {
@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("CreateUserCSV")]
-        public async Task<ActionResult<List<CreateUserCSVResponse>>> CreateUserCSV([FromQuery]CreateUserCSVRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<List<CreateUserCSVResponse>>> CreateUserCSV([FromQuery] CreateUserCSVRequest request, CancellationToken cancellationToken)
         {
             return Ok(await _mediator.Send(request, cancellationToken));
         }

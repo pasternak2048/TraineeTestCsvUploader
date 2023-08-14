@@ -9,7 +9,7 @@
         public string Name { get; set; }
 
         [CsvHelper.Configuration.Attributes.Name("Date of birth")]
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         [CsvHelper.Configuration.Attributes.Name("Married")]
         public bool Married { get; set; }

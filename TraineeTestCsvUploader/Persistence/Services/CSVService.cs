@@ -10,8 +10,7 @@ namespace Persistence.Services
         public IEnumerable<T> ReadCSV<T>(Stream file)
         {
             var reader = new StreamReader(file);
-            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
+            var csv = new CsvReader(reader, CultureInfo.GetCultureInfo("en-GB"));
             var records = csv.GetRecords<T>();
             return records;
         }
