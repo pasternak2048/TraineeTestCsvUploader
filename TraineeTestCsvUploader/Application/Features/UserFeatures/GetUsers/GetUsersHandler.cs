@@ -26,13 +26,13 @@ namespace Application.Features.UserFeatures.GetUsers
             itemsQueryable = request.SortState switch
             {
                 UserSortStateEnum.NameDesc => itemsQueryable.OrderByDescending(x => x.Name),
-                UserSortStateEnum.NameAsc => itemsQueryable.OrderByDescending(x => x.Name),
+                UserSortStateEnum.NameAsc => itemsQueryable.OrderBy(x => x.Name),
                 UserSortStateEnum.DateOfBirthDesc => itemsQueryable.OrderByDescending(x => x.DateOfBirth),
-                UserSortStateEnum.DateOfBirthAsc => itemsQueryable.OrderByDescending(x => x.DateOfBirth),
+                UserSortStateEnum.DateOfBirthAsc => itemsQueryable.OrderBy(x => x.DateOfBirth),
                 UserSortStateEnum.MarriedDesc => itemsQueryable.OrderByDescending(x => x.Married),
-                UserSortStateEnum.MarriedAsc => itemsQueryable.OrderByDescending(x => x.Married),
+                UserSortStateEnum.MarriedAsc => itemsQueryable.OrderBy(x => x.Married),
                 UserSortStateEnum.SalaryDesc => itemsQueryable.OrderByDescending(x => x.Salary),
-                UserSortStateEnum.SalaryAsc => itemsQueryable.OrderByDescending(x => x.Salary),
+                UserSortStateEnum.SalaryAsc => itemsQueryable.OrderBy(x => x.Salary),
                 _ => itemsQueryable
             };
 
