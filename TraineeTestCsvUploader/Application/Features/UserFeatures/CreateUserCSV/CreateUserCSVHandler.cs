@@ -1,4 +1,5 @@
-﻿using Application.Common.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
@@ -20,6 +21,10 @@ namespace Application.Features.UserFeatures.CreateUserCSV
 
         public async Task<List<CreateUserCSVResponse>> Handle(CreateUserCSVRequest request, CancellationToken cancellationToken)
         {
+            if(request.CSVFile == null)
+            {
+                throw new NotFoundException("File not found.");
+            }
             var items = _csvService.ReadCSV<User>(request.CSVFile.OpenReadStream()).ToList();
 
             _context.Users.AddRange(items);
