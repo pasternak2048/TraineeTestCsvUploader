@@ -1,4 +1,5 @@
 ﻿using Application.Common.Models;
+using Application.Features.UserFeatures.CreateUserCSV;
 using Application.Features.UserFeatures.DeleteUser;
 using Application.Features.UserFeatures.GetUsers;
 using Domain.Enums;
@@ -39,6 +40,16 @@ namespace WebUI.Pages
             });
 
             return RedirectToPage("./Index", new { pageNumber = pageNumber });
+        }
+
+        public async Task<IActionResult> OnPostUpload (IFormFile file)
+        {
+            await _mediator.Send(new CreateUserCSVRequest()
+            {
+                CSVFile = file
+            });
+
+            return RedirectToPage("./Index");
         }
     }
 }

@@ -27,6 +27,9 @@
                 Married
             </th>
             <th>
+                Phone
+            </th>
+            <th>
                 Salary
             </th>
             <th></th>
@@ -52,11 +55,17 @@
                         @married
                     </td>
                     <td>
+                        @item.Phone
+                    </td>
+                    <td>
                         @item.Salary
                     </td>
                     <td>
                         <form method="post">
-                            <button type="submit" class="btn btn-primary" asp-page-handler="Delete" asp-route-id="@item.Id" asp-route-pageNumber="@Model.Users.PageIndex">
+                            <a type="submit" class="btn btn-primary" asp-page="Edit" asp-route-pageId="@item.Id">
+                                Edit
+                            </a>
+                            <button type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@item.Id" asp-route-pageNumber="@Model.Users.PageIndex">
                                 Delete
                             </button>
                         </form>
@@ -66,6 +75,13 @@
         }
   
     </table>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="text/csv"/>
+        <button type="submit" class="btn btn-success" asp-page-handler="Upload">
+            Upload
+        </button>
+    </form>
 
 
 
