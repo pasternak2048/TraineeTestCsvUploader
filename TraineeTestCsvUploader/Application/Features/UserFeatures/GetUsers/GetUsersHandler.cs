@@ -56,9 +56,14 @@ namespace Application.Features.UserFeatures.GetUsers
                 itemsQueryable = itemsQueryable.Where(x => x.Married == request.Married);
             }
 
-            if (request.MinSalary != null && request.MaxSalary != null)
+            if (request.MinSalary != null )
             {
-                itemsQueryable = itemsQueryable.Where(x => x.Salary >= request.MinSalary && x.Salary <= request.MaxSalary);
+                itemsQueryable = itemsQueryable.Where(x => x.Salary >= request.MinSalary);
+            }
+
+            if (request.MaxSalary != null)
+            {
+                itemsQueryable = itemsQueryable.Where(x => x.Salary <= request.MaxSalary);
             }
 
             var items = await itemsQueryable.ToListAsync(cancellationToken);
